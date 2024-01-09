@@ -1,0 +1,133 @@
+<!-- user-form.component.html -->
+<div class="p-2">
+    <h2 class="text-center">
+        {{ editMode ? 'Edit Registration Form' : 'User Registration Form' }}
+
+    </h2>
+<form [formGroup]="userForm" class="container mt-4">
+    <div class="mb-3">
+      <label for="firstName" class="form-label">First Name:</label>
+      <input type="text" id="firstName" class="form-control" formControlName="firstName" />
+      <div *ngIf="_firstName.touched && _firstName.errors.required"      class="text-danger">
+        <p>First Name is Required</p>
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Last Name:</label>
+      <input type="text" id="lastName" class="form-control" formControlName="lastName" />
+      <div *ngIf="_lastName.touched && _lastName.errors?.required" class="text-danger">
+        <p>Last Name is Required</p>
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label for="email" class="form-label">Email:</label>
+      <input type="email" id="email" class="form-control" formControlName="email" />
+      <div *ngIf="_email.touched && _email.errors?.required" class="text-danger">
+        <p>Email is Required</p>
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label for="phone" class="form-label">Phone:</label>
+      <input type="tel" id="phone" class="form-control" formControlName="phone" />
+      <div *ngIf="_phone.touched && _phone.errors?.required" class="text-danger">
+        <p>Phone is Required</p>
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label for="company" class="form-label">Company:</label>
+      <input type="text" id="company" class="form-control" formControlName="company" />
+      <div *ngIf="_company.touched && _company.errors?.required" class="text-danger">
+        <p>Company is Required</p>
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label class="form-label">Gender:</label>
+      <div class="form-check">
+        <input type="radio" id="male" class="form-check-input" value="Male" formControlName="gender" />
+        <label for="male" class="form-check-label">Male</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" id="female" class="form-check-input" value="Female" formControlName="gender" />
+        <label for="female" class="form-check-label">Female</label>
+      </div>
+
+      <div *ngIf="_gender.touched && _gender.errors?.required" class="text-danger">
+        <p>Gender is Required</p>
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label for="dob" class="form-label">DOB (dd/mm/yyyy):</label>
+      <input type="date" id="dob" class="form-control" formControlName="dob" />
+      <div *ngIf="_dob.touched && _dob.errors?.required" class="text-danger">
+        <p>Date of Birth is Required</p>
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label for="password" class="form-label">Password:</label>
+      <input type="password" id="password" class="form-control" formControlName="password" />
+      <div *ngIf="_password.touched && _password.errors?.required" class="text-danger">
+        <p>Password is Required</p>
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label for="confirmPassword" class="form-label">Confirm Password:</label>
+      <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword" />
+      <div *ngIf="_confirmPassword.touched && _confirmPassword.errors?.required" class="text-danger">
+        <p>Confirm Password is Required</p>
+      </div>
+    </div>
+  
+    <!-- <button type="button" class="btn btn-primary mr-2" (click)="addUser()">Add User</button> -->
+    <button type="button" class="btn btn-primary mr-2" (click)="addUser()">
+        {{ editMode ? 'Update User' : 'Add User' }}
+      </button>
+      
+    <button type="button" class="btn btn-secondary ms-2" (click)="userForm_reset()">Cancel</button>
+  </form>
+
+
+
+
+  <div class="container-fluid">
+    <table class="table mt-4">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Company</th>
+            <th>DOB</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.company }}</td>
+            <td>{{ user.dob }}</td>
+
+            <td>
+              <button class="btn btn-primary mr-2" (click)="selectUser(user)">Edit</button>
+              <button class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+</div>
+
+  
