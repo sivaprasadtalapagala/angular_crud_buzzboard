@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from  '@angular/common/http';
 import { UserFormComponent } from './user-form/user-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TestPracticeComponent } from './test-practice/test-practice.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserFormComponent
+    UserFormComponent,
+    TestPracticeComponent
   ],
   imports: [
     BrowserModule,

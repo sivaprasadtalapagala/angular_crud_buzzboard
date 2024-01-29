@@ -30,4 +30,15 @@ export class UserService {
   deleteUser(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+
+
+  //test apis
+  postTestData(data:any){
+    return this.http.post(this.apiUrl,data)
+  }
+  editTestForm(data:any){
+    return this.http.post(this.apiUrl,data)
+
+  }
 }
